@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=/">
+  <title>Dokule</title>
+</head>
+<body>
+  <script>
+    // GitHub Pages SPA redirect
+    var path = window.location.pathname;
+    if (path === '/privacy' || path === '/terms' || path === '/imprint') {
+      window.location.href = '/' + '?p=' + path.replace('/', '');
+    } else {
+      window.location.href = '/';
+    }
+  </script>
+</body>
+</html>
