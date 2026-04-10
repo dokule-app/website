@@ -4,578 +4,302 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dokule — Manipulationssichere Schadensdokumentation</title>
-  <meta name="description" content="Dokule dokumentiert Kfz-Unfälle manipulationssicher. Fotos, GPS, Zeitstempel — alles verifiziert. Dein digitaler Unfallbeweis.">
-  <meta name="theme-color" content="#0F2B46">
+  <title>Dokule — Dokumentiert. Bewiesen.</title>
+  <meta name="description" content="Dokule digitalisiert die Schadensdokumentation für Versicherungen, Flotten und Unternehmen. Verifiziert, strukturiert, in 8 Sprachen.">
+  <meta name="theme-color" content="#2563EB">
   <link rel="canonical" href="https://dokule.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --brand: #0F2B46;
-      --brand-light: #1A3D5C;
-      --brand-soft: #E8EEF4;
-      --bg: #F7F8FA;
-      --surface: #FFFFFF;
-      --text: #0F1419;
-      --text-secondary: #536471;
-      --text-muted: #8899A6;
-      --border: #E1E8ED;
-      --green: #27AE60;
-      --red: #D63031;
+      --blue: #2563EB;
+      --blue-dark: #1A2744;
+      --blue-deep: #0F1B33;
+      --blue-light: #EFF4FF;
+      --blue-mid: #DBEAFE;
+      --white: #FFFFFF;
+      --bg: #FAFBFD;
+      --text: #1A2744;
+      --text2: #475569;
+      --text3: #94A3B8;
+      --border: #E2E8F0;
+      --red: #DC2626;
+      --green: #16A34A;
     }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--text); -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
 
 ```
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  font-family: 'Outfit', sans-serif;
-  color: var(--text);
-  background: var(--bg);
-  -webkit-font-smoothing: antialiased;
-}
+/* ── ACCESSIBILITY ── */
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
 
 /* ── NAV ── */
-nav {
-  position: fixed; top: 0; width: 100%; z-index: 100;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  padding: 0 24px;
-}
-.nav-inner {
-  max-width: 1080px; margin: 0 auto;
-  display: flex; justify-content: space-between; align-items: center;
-  height: 64px;
-}
-.nav-logo {
-  font-size: 22px; font-weight: 800; color: var(--brand);
-  letter-spacing: 1px; text-decoration: none;
-}
+nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 0 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 68px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800; color: var(--blue-dark); letter-spacing: 0.5px; }
+.nav-logo img { height: 36px; width: 36px; border-radius: 8px; }
 .nav-links { display: flex; gap: 32px; align-items: center; }
-.nav-links a {
-  color: var(--text-secondary); text-decoration: none;
-  font-size: 14px; font-weight: 500; transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--brand); }
-.nav-cta {
-  background: var(--brand) !important; color: #fff !important;
-  padding: 10px 24px !important; border-radius: 10px;
-  font-weight: 600 !important; font-size: 13px !important;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(15,43,70,0.2); }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--text2); transition: color 0.2s; }
+.nav-links a:hover { color: var(--blue); }
+.nav-cta { background: var(--blue) !important; color: var(--white) !important; padding: 10px 24px !important; border-radius: 8px; font-weight: 600 !important; transition: background 0.2s; }
+.nav-cta:hover { background: #1D4ED8 !important; }
 
 /* ── HERO ── */
-.hero {
-  padding: 160px 24px 100px;
-  text-align: center;
-  background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--brand-soft); color: var(--brand);
-  padding: 8px 16px; border-radius: 100px;
-  font-size: 13px; font-weight: 600;
-  margin-bottom: 32px;
-}
-.hero-badge-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--green);
-  animation: pulse 2s infinite;
-}
-@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.hero { padding: 160px 32px 100px; background: linear-gradient(180deg, var(--blue-light) 0%, var(--white) 100%); text-align: center; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid var(--border); padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 600; color: var(--blue); margin-bottom: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.hero-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+.hero h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 900; line-height: 1.1; color: var(--blue-dark); max-width: 720px; margin: 0 auto 20px; }
+.hero p { font-size: clamp(16px, 2vw, 18px); color: var(--text2); max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
+.hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: var(--white); padding: 16px 36px; border-radius: 12px; font-size: 16px; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; }
+.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.25); }
 
-.hero h1 {
-  font-size: clamp(36px, 6vw, 64px);
-  font-weight: 800; line-height: 1.1;
-  color: var(--brand);
-  max-width: 700px; margin: 0 auto 24px;
-}
-.hero p {
-  font-size: clamp(16px, 2.5vw, 20px);
-  color: var(--text-secondary);
-  max-width: 540px; margin: 0 auto 40px;
-  line-height: 1.6;
-}
-.hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-.btn-primary {
-  background: var(--brand); color: #fff;
-  padding: 16px 36px; border-radius: 14px;
-  font-size: 16px; font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: inline-flex; align-items: center; gap: 10px;
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,43,70,0.2); }
-.btn-secondary {
-  background: transparent; color: var(--brand);
-  padding: 16px 36px; border-radius: 14px;
-  font-size: 16px; font-weight: 600;
-  text-decoration: none; border: 2px solid var(--border);
-  transition: border-color 0.2s;
-}
-.btn-secondary:hover { border-color: var(--brand); }
+/* ── STATS ── */
+.stats { padding: 72px 32px; background: var(--blue-dark); }
+.stats-inner { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
+.stat-number { font-size: 44px; font-weight: 900; color: var(--white); }
+.stat-number span { color: var(--blue); }
+.stat-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 6px; line-height: 1.5; }
 
-/* ── FEATURES ── */
-.features {
-  padding: 100px 24px;
-  max-width: 1080px; margin: 0 auto;
-}
-.section-label {
-  font-size: 13px; font-weight: 700; letter-spacing: 2px;
-  color: var(--text-muted); text-transform: uppercase;
-  text-align: center; margin-bottom: 16px;
-}
-.section-title {
-  font-size: clamp(28px, 4vw, 42px);
-  font-weight: 800; text-align: center;
-  color: var(--text); margin-bottom: 16px;
-}
-.section-subtitle {
-  font-size: 17px; color: var(--text-secondary);
-  text-align: center; max-width: 560px;
-  margin: 0 auto 60px; line-height: 1.6;
-}
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-}
-.feature-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 32px;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(15,43,70,0.08);
-}
-.feature-icon {
-  width: 48px; height: 48px;
-  background: var(--brand-soft);
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px; margin-bottom: 20px;
-}
-.feature-card h3 {
-  font-size: 18px; font-weight: 700;
-  margin-bottom: 8px; color: var(--text);
-}
-.feature-card p {
-  font-size: 15px; color: var(--text-secondary);
-  line-height: 1.6;
-}
+/* ── SECTIONS ── */
+.section { padding: 100px 32px; }
+.section.alt { background: var(--bg); }
+.section-inner { max-width: 1080px; margin: 0 auto; }
+.section-tag { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+.section-tag.red { color: var(--red); }
+.section-tag.green { color: var(--green); }
+.section-tag.blue { color: var(--blue); }
+.section-title { font-size: clamp(26px, 4vw, 40px); font-weight: 800; line-height: 1.15; margin-bottom: 16px; color: var(--blue-dark); max-width: 600px; }
+.section-sub { font-size: 16px; color: var(--text2); max-width: 520px; line-height: 1.7; margin-bottom: 48px; }
 
-/* ── HOW IT WORKS ── */
-.how {
-  padding: 100px 24px;
-  background: var(--brand);
-  color: #fff;
-}
-.how .section-label { color: rgba(255,255,255,0.5); }
-.how .section-title { color: #fff; }
-.how .section-subtitle { color: rgba(255,255,255,0.7); }
-.steps {
-  max-width: 800px; margin: 0 auto;
-  display: grid; gap: 32px;
-}
-.step {
-  display: flex; gap: 24px; align-items: flex-start;
-}
-.step-number {
-  min-width: 48px; height: 48px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; font-weight: 800;
-  color: rgba(255,255,255,0.6);
-}
-.step h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
-.step p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+/* ── PROBLEM CARDS ── */
+.cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: box-shadow 0.2s; }
+.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.card-num { font-size: 28px; font-weight: 800; color: var(--blue); opacity: 0.3; margin-bottom: 12px; }
+.card h3 { font-size: 16px; font-weight: 700; color: var(--blue-dark); margin-bottom: 6px; }
+.card p { font-size: 14px; color: var(--text2); line-height: 1.6; }
+
+/* ── SOLUTION CARDS ── */
+.sol-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.sol-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: border-color 0.2s; }
+.sol-card:hover { border-color: var(--blue); }
+.sol-icon { width: 44px; height: 44px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: var(--blue); }
+.sol-card h3 { font-size: 16px; font-weight: 700; color: var(--blue-dark); margin-bottom: 6px; }
+.sol-card p { font-size: 14px; color: var(--text2); line-height: 1.6; }
 
 /* ── LANGUAGES ── */
-.languages {
-  padding: 80px 24px;
-  text-align: center;
-}
-.lang-flags {
-  display: flex; gap: 16px; justify-content: center;
-  flex-wrap: wrap; margin-top: 32px;
-}
-.lang-flag {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--surface); border: 1px solid var(--border);
-  padding: 12px 20px; border-radius: 12px;
-  font-size: 14px; font-weight: 500; color: var(--text);
-}
-.lang-flag span { font-size: 20px; }
+.lang-list { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+.lang-item { background: var(--blue-light); padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--blue-dark); }
 
-/* ── CTA ── */
-.cta {
-  padding: 100px 24px;
-  text-align: center;
-}
-.cta h2 {
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 800; color: var(--text);
-  margin-bottom: 16px;
-}
-.cta p {
-  font-size: 17px; color: var(--text-secondary);
-  margin-bottom: 40px; line-height: 1.6;
-}
+/* ── CONTACT ── */
+.contact-inner { max-width: 580px; margin: 0 auto; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label { font-size: 13px; font-weight: 500; color: var(--text2); }
+.form-group input, .form-group select, .form-group textarea { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 13px 16px; font-size: 15px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+.form-group textarea { min-height: 100px; resize: vertical; }
+.form-submit { margin-top: 20px; background: var(--blue); color: var(--white); border: none; padding: 15px; border-radius: 10px; font-size: 15px; font-weight: 600; font-family: 'Outfit', sans-serif; cursor: pointer; width: 100%; transition: background 0.2s; }
+.form-submit:hover { background: #1D4ED8; }
+.form-success { display: none; text-align: center; padding: 40px 20px; }
+.form-success h3 { font-size: 22px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
+.form-success p { color: var(--text2); }
 
-/* ── LEGAL PAGES ── */
-.legal {
-  display: none;
-  padding: 120px 24px 80px;
-  max-width: 720px; margin: 0 auto;
-}
+/* ── LEGAL ── */
+.legal { display: none; padding: 120px 32px 80px; max-width: 680px; margin: 0 auto; }
 .legal.active { display: block; }
-.legal h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
-.legal .legal-date { font-size: 14px; color: var(--text-muted); margin-bottom: 32px; }
-.legal h2 { font-size: 20px; font-weight: 700; margin: 32px 0 12px; }
-.legal p, .legal li { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px; }
-.legal ul { padding-left: 24px; }
+.legal h1 { font-size: 30px; font-weight: 800; color: var(--blue-dark); margin-bottom: 6px; }
+.legal .legal-date { font-size: 14px; color: var(--text3); margin-bottom: 28px; }
+.legal h2 { font-size: 17px; font-weight: 700; color: var(--blue-dark); margin: 28px 0 8px; }
+.legal p { font-size: 15px; color: var(--text2); line-height: 1.7; margin-bottom: 10px; }
 
 /* ── FOOTER ── */
-footer {
-  padding: 48px 24px;
-  border-top: 1px solid var(--border);
-  text-align: center;
-}
-.footer-inner {
-  max-width: 1080px; margin: 0 auto;
-}
-.footer-links {
-  display: flex; gap: 24px; justify-content: center;
-  flex-wrap: wrap; margin-bottom: 16px;
-}
-.footer-links a {
-  color: var(--text-secondary); text-decoration: none;
-  font-size: 13px; font-weight: 500;
-}
-.footer-links a:hover { color: var(--brand); }
-.footer-copy { font-size: 12px; color: var(--text-muted); }
+footer { padding: 40px 32px; border-top: 1px solid var(--border); background: var(--bg); text-align: center; }
+.footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; }
+.footer-links a { font-size: 13px; color: var(--text2); }
+.footer-links a:hover { color: var(--blue); }
+.footer-copy { font-size: 12px; color: var(--text3); }
 
 /* ── RESPONSIVE ── */
-       @media (max-width: 640px) {
-      .nav-links a:not(.nav-cta) { display: none; }
-      .nav-cta { padding: 8px 16px !important; font-size: 12px !important; }
-      .hero { padding: 100px 20px 60px; }
-      .hero h1 { font-size: 32px; }
-      .hero p { font-size: 15px; }
-      .hero-buttons { flex-direction: column; align-items: stretch; }
-      .btn-primary, .btn-secondary { width: 100%; text-align: center; justify-content: center; font-size: 14px; padding: 14px 24px; }
-      .features-grid { grid-template-columns: 1fr; }
-      .step { flex-direction: column; gap: 12px; }
-      .section-title { font-size: 26px; }
-      .legal { padding: 80px 16px 60px; }
-      .legal h1 { font-size: 26px; }
-    }
-
-
+@media (max-width: 768px) {
+  .nav-links a:not(.nav-cta) { display: none; }
+  .nav-cta { padding: 8px 16px !important; font-size: 13px !important; }
+  .hero { padding: 120px 20px 60px; }
+  .hero h1 { font-size: 32px; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .stat-number { font-size: 32px; }
+  .cards-grid, .sol-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
 ```
 
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-
-<nav>
+<nav role="navigation" aria-label="Hauptnavigation">
   <div class="nav-inner">
-    <a href="#" class="nav-logo" onclick="showPage('home')">DOKULE</a>
+    <a href="#" class="nav-logo" onclick="showPage('home')" aria-label="Dokule Startseite">DOKULE</a>
     <div class="nav-links">
-      <a href="#features" onclick="showPage('home')">Features</a>
-      <a href="#how" onclick="showPage('home')">So funktioniert's</a>
-      <a href="#" class="nav-cta">App herunterladen</a>
+      <a href="#problem" onclick="showPage('home')">Das Problem</a>
+      <a href="#solution" onclick="showPage('home')">Lösung</a>
+      <a href="#contact" class="nav-cta" onclick="showPage('home')">Kontakt aufnehmen</a>
     </div>
   </div>
 </nav>
 
-<!-- HOME PAGE -->
-
 <div id="page-home">
 
-  <!-- HERO -->
+  <section class="hero" role="banner">
+    <div class="hero-tag"><div class="hero-dot" aria-hidden="true"></div> Dokumentiert. Bewiesen.</div>
+    <h1>Schadensdokumentation, der man vertrauen kann.</h1>
+    <p>Dokule macht Schadensmeldungen überprüfbar — mit verifizierten Fotos, Standort und Zeitstempeln. Ohne KI. Ohne Manipulation.</p>
+    <a href="#contact" class="hero-cta" role="button">Kontakt aufnehmen →</a>
+  </section>
 
-  <section class="hero">
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
-      Manipulationssicher verifiziert
-    </div>
-    <h1>Dein Unfallbeweis. Digital gesichert.</h1>
-    <p>Dokule dokumentiert Kfz-Schäden mit Fotos, GPS-Koordinaten und Zeitstempeln — kryptografisch verifiziert und fälschungssicher.</p>
-    <div class="hero-buttons">
-      <a href="#" class="btn-primary">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/><path d="M10 8l6 4-6 4V8z" fill="currentColor" stroke="none"/></svg>
-        Im App Store laden
-      </a>
-      <a href="#how" class="btn-secondary">So funktioniert's</a>
+  <section class="stats" role="region" aria-label="Statistiken">
+    <div class="stats-inner">
+      <div><div class="stat-number">6<span> Mrd.</span></div><div class="stat-label">Euro Schaden durch Versicherungs­betrug pro Jahr</div></div>
+      <div><div class="stat-number">10<span>%</span></div><div class="stat-label">aller Schadens­meldungen sind verdächtig</div></div>
+      <div><div class="stat-number">2,5<span> Mio.</span></div><div class="stat-label">registrierte Verkehrs­unfälle pro Jahr in Deutschland</div></div>
+      <div><div class="stat-number">0<span>%</span></div><div class="stat-label">KI bei der Dokumentation — 100% manuell erfasst</div></div>
     </div>
   </section>
 
-  <!-- FEATURES -->
-
-  <section class="features" id="features">
-    <div class="section-label">Features</div>
-    <h2 class="section-title">Alles was du nach einem Unfall brauchst</h2>
-    <p class="section-subtitle">Dokule führt dich Schritt für Schritt durch die Schadensdokumentation — damit du nichts vergisst und deine Versicherung alles bekommt.</p>
-      <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon" style="color: var(--brand);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        </div>
-        <h3>Verifizierte Fotos</h3>
-        <p>Jedes Foto wird mit Zeitstempel, GPS-Koordinaten und SHA-256 Hash gesichert. Nachträgliche Manipulation ist ausgeschlossen.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="color: var(--brand);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </div>
-        <h3>Geführter Ablauf</h3>
-        <p>Unfallart, Beschreibung, Schadenbereich, Beteiligte, Polizei — Dokule fragt alles ab was deine Versicherung braucht.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="color: var(--brand);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </div>
-        <h3>QR-Code Austausch</h3>
-        <p>Tausche Daten mit der Gegenseite per QR-Code — schnell, sicher, datenschutzkonform. Nur Versicherungsdaten werden geteilt.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="color: var(--brand);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <h3>GPS-Protokoll</h3>
-        <p>Jede Aktion wird mit Ort und Zeit dokumentiert. Ein lückenloses Protokoll das vor Gericht standhält.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="color: var(--brand);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        </div>
-        <h3>Verifizierter Export</h3>
-        <p>Erstelle einen professionellen PDF-Schadensbericht mit allen Beweisen — direkt an deine Versicherung.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="color: var(--brand);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h3>8 Sprachen</h3>
-        <p>Deutsch, Englisch, Türkisch, Arabisch, Französisch, Polnisch, Rumänisch und Russisch. Für jeden Unfall, egal wer beteiligt ist.</p>
+  <section class="section" id="problem" role="region" aria-label="Das Problem">
+    <div class="section-inner">
+      <div class="section-tag red">Das Problem</div>
+      <h2 class="section-title">Schadensmeldungen sind ein Vertrauens­problem.</h2>
+      <p class="section-sub">Versicherer verlieren Milliarden durch manipulierte Meldungen. Die aktuelle Dokumentation ist veraltet, fehleranfällig und nicht überprüfbar.</p>
+      <div class="cards-grid">
+        <div class="card"><div class="card-num">01</div><h3>Fotos ohne Kontext</h3><p>Schadenfotos werden ohne nachweisbaren Zeitstempel oder Standort eingereicht. Manipulierte Bilder sind nicht erkennbar.</p></div>
+        <div class="card"><div class="card-num">02</div><h3>Unvollständige Meldungen</h3><p>Wichtige Informationen fehlen systematisch. Das verzögert die Regulierung und erhöht den Aufwand.</p></div>
+        <div class="card"><div class="card-num">03</div><h3>Kein Manipulationsschutz</h3><p>Berichte und Anhänge können jederzeit verändert werden. Es gibt keine Möglichkeit, die Echtheit zu verifizieren.</p></div>
+        <div class="card"><div class="card-num">04</div><h3>Sprachbarrieren</h3><p>Bei Vorfällen mit internationalen Beteiligten scheitert die Dokumentation an der Kommunikation.</p></div>
       </div>
     </div>
-
   </section>
 
-  <!-- HOW IT WORKS -->
-
-  <section class="how" id="how">
-    <div class="section-label">So funktioniert's</div>
-    <h2 class="section-title">In 3 Minuten dokumentiert</h2>
-    <p class="section-subtitle">Nach einem Unfall hast du keine Zeit für komplizierte Apps. Dokule macht es einfach.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-number">01</div>
-        <div>
-          <h3>Was ist passiert?</h3>
-          <p>Wähle die Unfallart, beschreibe kurz was passiert ist, und markiere die beschädigten Seiten an deinem Fahrzeug.</p>
+  <section class="section alt" id="solution" role="region" aria-label="Die Lösung">
+    <div class="section-inner">
+      <div class="section-tag green">Die Lösung</div>
+      <h2 class="section-title">Jede Meldung verifizierbar. Jedes Foto nachweisbar.</h2>
+      <p class="section-sub">Dokule gibt Versicherungen und Unternehmen ein Werkzeug, das Schadensmeldungen überprüfbar macht.</p>
+      <div class="sol-grid">
+        <div class="sol-card">
+          <div class="sol-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+          <h3>Verifizierte Erfassung</h3><p>Jedes Foto wird mit Zeitstempel und Standort erfasst. Änderungen sind im Protokoll sichtbar.</p>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-number">02</div>
-        <div>
-          <h3>Fotos aufnehmen</h3>
-          <p>Fotografiere den Schaden. Dokule speichert automatisch Zeitstempel und GPS-Koordinaten — manipulationssicher.</p>
+        <div class="sol-card">
+          <div class="sol-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <h3>Strukturierte Daten</h3><p>Geführter Ablauf erfasst alle relevanten Informationen — vollständig und einheitlich.</p>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-number">03</div>
-        <div>
-          <h3>Daten austauschen</h3>
-          <p>Scanne den QR-Code der Gegenseite oder gib die Daten manuell ein. Deine persönlichen Daten bleiben geschützt.</p>
+        <div class="sol-card">
+          <div class="sol-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3>Datenaustausch per QR</h3><p>Beteiligte tauschen Daten per QR-Code — ohne persönliche Adressen preiszugeben.</p>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-number">04</div>
-        <div>
-          <h3>Export an Versicherung</h3>
-          <p>Erstelle einen verifizierten PDF-Bericht mit allen Beweisen und sende ihn direkt an deine Versicherung.</p>
+        <div class="sol-card">
+          <div class="sol-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <h3>Lückenloses Protokoll</h3><p>Jede Aktion wird mit Zeitpunkt und Standort dokumentiert.</p>
+        </div>
+        <div class="sol-card">
+          <div class="sol-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <h3>8 Sprachen</h3><p>Deutsch, Englisch, Türkisch, Arabisch, Französisch, Polnisch, Rumänisch, Russisch.</p>
+        </div>
+        <div class="sol-card">
+          <div class="sol-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Ohne KI</h3><p>Alles wird vom Menschen erfasst — keine generierten Texte, keine automatisierten Beschreibungen.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- LANGUAGES -->
-
-  <section class="languages">
-    <div class="section-label">Mehrsprachig</div>
-    <h2 class="section-title">Unfälle kennen keine Sprachbarriere</h2>
-    <p class="section-subtitle">Dokule spricht die Sprachen der häufigsten Verkehrsteilnehmer in Deutschland.</p>
-    <div class="lang-flags">
-      <div class="lang-flag"><span>🇩🇪</span> Deutsch</div>
-      <div class="lang-flag"><span>🇬🇧</span> English</div>
-      <div class="lang-flag"><span>🇹🇷</span> Türkçe</div>
-      <div class="lang-flag"><span>🇸🇦</span> العربية</div>
-      <div class="lang-flag"><span>🇫🇷</span> Français</div>
-      <div class="lang-flag"><span>🇵🇱</span> Polski</div>
-      <div class="lang-flag"><span>🇷🇴</span> Română</div>
-      <div class="lang-flag"><span>🇷🇺</span> Русский</div>
+  <section class="section" style="text-align:center;" role="region" aria-label="Sprachen">
+    <div class="section-tag blue">Mehrsprachig</div>
+    <h2 class="section-title" style="text-align:center;margin:0 auto 8px;">Verfügbar in 8 Sprachen</h2>
+    <p style="color:var(--text2);margin-bottom:0;">Damit Dokumentation nicht an der Sprache scheitert.</p>
+    <div class="lang-list">
+      <div class="lang-item">Deutsch</div><div class="lang-item">English</div><div class="lang-item">Türkçe</div><div class="lang-item">العربية</div>
+      <div class="lang-item">Français</div><div class="lang-item">Polski</div><div class="lang-item">Română</div><div class="lang-item">Русский</div>
     </div>
   </section>
 
-  <!-- CTA -->
-
-  <section class="cta">
-    <h2>Bereit für den Ernstfall?</h2>
-    <p>Lade Dokule jetzt herunter — kostenlos. Damit du im Fall der Fälle alles richtig dokumentierst.</p>
-    <a href="#" class="btn-primary">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/><path d="M10 8l6 4-6 4V8z" fill="currentColor" stroke="none"/></svg>
-      Im App Store laden
-    </a>
+  <section class="section alt" id="contact" role="region" aria-label="Kontakt">
+    <div class="contact-inner">
+      <div class="section-tag blue" style="text-align:center;">Kontakt</div>
+      <h2 class="section-title" style="text-align:center;margin:0 auto 8px;">Sprechen Sie mit unserem Team.</h2>
+      <p class="section-sub" style="text-align:center;margin:0 auto 40px;">Erfahren Sie, wie Dokule Ihre Schadensbearbeitung verbessern kann.</p>
+      <div id="contactForm">
+        <div class="form-row">
+          <div class="form-group"><label for="f-anrede">Anrede</label><select id="f-anrede"><option value="">Bitte wählen</option><option>Herr</option><option>Frau</option><option>Divers</option></select></div>
+          <div class="form-group"><label for="f-company">Unternehmen</label><input type="text" id="f-company" placeholder="z.B. Allianz Versicherungs-AG"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="f-first">Vorname *</label><input type="text" id="f-first" required></div>
+          <div class="form-group"><label for="f-last">Nachname *</label><input type="text" id="f-last" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="f-email">E-Mail *</label><input type="email" id="f-email" required></div>
+          <div class="form-group"><label for="f-phone">Telefon</label><input type="tel" id="f-phone"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full"><label for="f-interest">Wie können wir Ihnen helfen?</label><select id="f-interest"><option value="">Bitte wählen</option><option>Integration in bestehende Systeme</option><option>Pilotprojekt starten</option><option>API-Zugang</option><option>Flottenmanagement</option><option>Allgemeine Anfrage</option></select></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full"><label for="f-message">Nachricht</label><textarea id="f-message" placeholder="Beschreiben Sie Ihren Anwendungsfall..."></textarea></div>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Anfrage senden</button>
+      </div>
+      <div class="form-success" id="formSuccess"><h3>Anfrage gesendet.</h3><p>Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p></div>
+    </div>
   </section>
 
 </div>
-
-<!-- PRIVACY PAGE -->
 
 <div id="page-privacy" class="legal">
-  <h1>Datenschutzerklärung</h1>
-  <p class="legal-date">Stand: April 2026</p>
-
-  <h2>1. Verantwortlicher</h2>
-  <p>Verantwortlich für die Datenverarbeitung ist der Betreiber der App Dokule. Kontakt: datenschutz@dokule.com</p>
-
-  <h2>2. Welche Daten wir erheben</h2>
-  <p>Bei der Registrierung: E-Mail-Adresse, Vorname, Nachname, Adresse, Telefonnummer. Bei der Nutzung: Fotos, GPS-Koordinaten, Zeitstempel, Fahrzeugdaten, Versicherungsdaten.</p>
-
-  <h2>3. Zweck der Datenverarbeitung</h2>
-  <p>Die Daten werden ausschließlich zur Schadensdokumentation, Beweissicherung und zum Datenaustausch mit Versicherungen und Unfallbeteiligten verarbeitet.</p>
-
-  <h2>4. Speicherung</h2>
-  <p>Deine Daten werden auf Servern von Supabase (AWS, EU-Region Frankfurt) gespeichert. Die Übertragung erfolgt verschlüsselt (TLS/SSL).</p>
-
-  <h2>5. Weitergabe an Dritte</h2>
-  <p>Deine Daten werden nur an Dritte weitergegeben, wenn du dies aktiv veranlasst (z.B. QR-Code teilen, Export an Versicherung). Es findet keine Weitergabe zu Werbezwecken statt.</p>
-
-  <h2>6. QR-Code Datenaustausch</h2>
-  <p>Beim QR-Code Scan werden nur Name, Versicherung und Kennzeichen geteilt. Adresse, Telefonnummer und persönliche Daten werden nicht übermittelt.</p>
-
-  <h2>7. Deine Rechte</h2>
-  <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung und Datenportabilität gemäß DSGVO. Kontaktiere uns unter datenschutz@dokule.com.</p>
-
-  <h2>8. Account-Löschung</h2>
-  <p>Du kannst deinen Account jederzeit in der App unter Profil → Account löschen vollständig entfernen. Alle Daten werden dabei unwiderruflich gelöscht.</p>
-
-  <h2>9. Cookies</h2>
-  <p>Die Dokule-Website verwendet keine Tracking-Cookies. Die App verwendet keine Cookies.</p>
-
-  <h2>10. Änderungen</h2>
-  <p>Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf zu aktualisieren. Die aktuelle Version ist immer unter dokule.com/privacy abrufbar.</p>
+  <h1>Datenschutzerklärung</h1><p class="legal-date">Stand: April 2026</p>
+  <h2>1. Verantwortlicher</h2><p>Verantwortlich für die Datenverarbeitung ist der Betreiber der App Dokule. Kontakt: datenschutz@dokule.com</p>
+  <h2>2. Welche Daten wir erheben</h2><p>Bei der Registrierung: E-Mail-Adresse, Vorname, Nachname, Adresse, Telefonnummer. Bei der Nutzung: Fotos, GPS-Koordinaten, Zeitstempel, Fahrzeugdaten, Versicherungsdaten.</p>
+  <h2>3. Zweck der Datenverarbeitung</h2><p>Die Daten werden ausschließlich zur Schadensdokumentation und Beweissicherung verarbeitet.</p>
+  <h2>4. Speicherung</h2><p>Deine Daten werden auf Servern in der EU (AWS Frankfurt) gespeichert. Die Übertragung erfolgt verschlüsselt.</p>
+  <h2>5. Weitergabe an Dritte</h2><p>Deine Daten werden nur weitergegeben, wenn du dies aktiv veranlasst. Keine Weitergabe zu Werbezwecken.</p>
+  <h2>6. QR-Code Datenaustausch</h2><p>Beim QR-Code Scan werden nur Name, Versicherung und Kennzeichen geteilt.</p>
+  <h2>7. Deine Rechte</h2><p>Auskunft, Berichtigung, Löschung und Datenportabilität gemäß DSGVO. Kontakt: datenschutz@dokule.com</p>
+  <h2>8. Cookies</h2><p>Diese Website und die App verwenden keine Tracking-Cookies.</p>
 </div>
-
-<!-- TERMS PAGE -->
-
 <div id="page-terms" class="legal">
-  <h1>Nutzungsbedingungen</h1>
-  <p class="legal-date">Stand: April 2026</p>
-
-  <h2>1. Geltungsbereich</h2>
-  <p>Diese Nutzungsbedingungen gelten für die Nutzung der Dokule App und der Website dokule.com.</p>
-
-  <h2>2. Leistungsbeschreibung</h2>
-  <p>Dokule ist eine App zur manipulationssicheren Dokumentation von Kfz-Schäden. Die App ermöglicht das Erfassen von Fotos, Beschreibungen, GPS-Daten und den Austausch von Daten zwischen Unfallbeteiligten.</p>
-
-  <h2>3. Registrierung</h2>
-  <p>Für die Nutzung ist ein Benutzerkonto erforderlich. Du bist für die Richtigkeit deiner Angaben verantwortlich und musst dein Passwort vertraulich behandeln.</p>
-
-  <h2>4. Keine Rechtsberatung</h2>
-  <p>Dokule bietet keine Rechtsberatung. Die App unterstützt bei der Dokumentation, ersetzt aber keine anwaltliche oder versicherungstechnische Beratung.</p>
-
-  <h2>5. Verifizierung</h2>
-  <p>Die kryptografische Verifizierung (SHA-256 Hash) dient als Nachweis der Datenintegrität. Dies stellt keine rechtsverbindliche Beglaubigung dar.</p>
-
-  <h2>6. Kosten</h2>
-  <p>Die Grundfunktionen der App sind kostenlos. Der verifizierte PDF-Export ist für Nutzer mit verknüpfter Versicherung kostenlos. Ohne verknüpfte Versicherung kann eine Gebühr anfallen.</p>
-
-  <h2>7. Haftung</h2>
-  <p>Dokule haftet nicht für die Vollständigkeit oder rechtliche Verwertbarkeit der dokumentierten Daten. Die Verantwortung für die korrekte Unfallaufnahme liegt beim Nutzer.</p>
-
-  <h2>8. Kündigung</h2>
-  <p>Du kannst dein Konto jederzeit löschen. Wir behalten uns vor, Konten bei Missbrauch zu sperren.</p>
-
-  <h2>9. Anwendbares Recht</h2>
-  <p>Es gilt das Recht der Bundesrepublik Deutschland.</p>
+  <h1>Nutzungsbedingungen</h1><p class="legal-date">Stand: April 2026</p>
+  <h2>1. Geltungsbereich</h2><p>Diese Nutzungsbedingungen gelten für die Nutzung der Dokule App und der Website dokule.com.</p>
+  <h2>2. Leistungsbeschreibung</h2><p>Dokule ist eine App zur Dokumentation von Schäden mit Fotos, Beschreibungen, GPS-Daten und Datenaustausch.</p>
+  <h2>3. Keine Rechtsberatung</h2><p>Dokule bietet keine Rechtsberatung und ersetzt keine anwaltliche Beratung.</p>
+  <h2>4. Kosten</h2><p>Grundfunktionen sind kostenlos. Für bestimmte Exportfunktionen kann eine Gebühr anfallen.</p>
+  <h2>5. Haftung</h2><p>Dokule haftet nicht für die Vollständigkeit oder rechtliche Verwertbarkeit der dokumentierten Daten.</p>
+  <h2>6. Anwendbares Recht</h2><p>Es gilt das Recht der Bundesrepublik Deutschland.</p>
 </div>
-
-<!-- IMPRINT PAGE -->
-
 <div id="page-imprint" class="legal">
-  <h1>Impressum</h1>
-  <p class="legal-date">Angaben gemäß § 5 TMG</p>
-
-  <h2>Betreiber</h2>
-  <p>Dokule<br>
-  A. Arikan<br>
- Aldebaranstr. 3<br>
-  12529 Schönefeld<br>
-  Deutschland</p>
-
-  <h2>Kontakt</h2>
-  <p>E-Mail: kontakt@dokule.com</p>
-
-  <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-  <p>A. Arikan<br>
-  Aldebaranstr. 3, 12529 Schönefeld, DE</p>
-
-  <h2>Streitschlichtung</h2>
-  <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: ec.europa.eu/consumers/odr. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+  <h1>Impressum</h1><p class="legal-date">Angaben gemäß § 5 TMG</p>
+  <h2>Betreiber</h2><p>Dokule<br>Azra Arikan<br>Berlin, Deutschland</p>
+  <h2>Kontakt</h2><p>E-Mail: kontakt@dokule.com</p>
+  <h2>Verantwortlich für den Inhalt</h2><p>Azra Arikan</p>
 </div>
 
-<!-- FOOTER -->
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-links">
-      <a href="#" onclick="showPage('home')">Home</a>
-      <a href="#" onclick="showPage('privacy')">Datenschutz</a>
-      <a href="#" onclick="showPage('terms')">Nutzungsbedingungen</a>
-      <a href="#" onclick="showPage('imprint')">Impressum</a>
-    </div>
-    <p class="footer-copy">© 2026 Dokule. Alle Rechte vorbehalten.</p>
+<footer role="contentinfo">
+  <div class="footer-links">
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('privacy')">Datenschutz</a>
+    <a href="#" onclick="showPage('terms')">Nutzungsbedingungen</a>
+    <a href="#" onclick="showPage('imprint')">Impressum</a>
   </div>
+  <p class="footer-copy">© 2026 Dokule. Alle Rechte vorbehalten.</p>
 </footer>
 
-<!-- ROUTING -->
-
 <script>
-  function showPage(page) {
-    document.getElementById('page-home').style.display = page === 'home' ? 'block' : 'none';
-    document.querySelectorAll('.legal').forEach(el => el.classList.remove('active'));
-    if (page !== 'home') {
-      document.getElementById('page-' + page).classList.add('active');
-    }
-    window.scrollTo(0, 0);
-
-    // Update URL without reload
-    const paths = { home: '/', privacy: '/privacy', terms: '/terms', imprint: '/imprint' };
-    history.pushState({}, '', paths[page] || '/');
-  }
-
-  // Handle direct URL access and back/forward
-  function handleRoute() {
-    const path = window.location.pathname;
-    if (path === '/privacy' || path === '/privacy.html') showPage('privacy');
-    else if (path === '/terms' || path === '/terms.html') showPage('terms');
-    else if (path === '/imprint' || path === '/imprint.html') showPage('imprint');
-    else showPage('home');
-  }
-
-  window.addEventListener('popstate', handleRoute);
-  handleRoute();
+function showPage(p){document.getElementById('page-home').style.display=p==='home'?'block':'none';document.querySelectorAll('.legal').forEach(e=>e.classList.remove('active'));if(p!=='home')document.getElementById('page-'+p).classList.add('active');window.scrollTo(0,0);history.pushState({},'',p==='home'?'/':'/'+p);}
+function handleRoute(){var p=window.location.pathname;if(p.includes('privacy'))showPage('privacy');else if(p.includes('terms'))showPage('terms');else if(p.includes('imprint'))showPage('imprint');else showPage('home');}
+window.addEventListener('popstate',handleRoute);handleRoute();
+function submitForm(){var d={anrede:document.getElementById('f-anrede').value,company:document.getElementById('f-company').value,firstName:document.getElementById('f-first').value,lastName:document.getElementById('f-last').value,email:document.getElementById('f-email').value,phone:document.getElementById('f-phone').value,interest:document.getElementById('f-interest').value,message:document.getElementById('f-message').value};if(!d.firstName||!d.lastName||!d.email){alert('Bitte füllen Sie die Pflichtfelder aus.');return;}var s=encodeURIComponent('Dokule Anfrage von '+d.firstName+' '+d.lastName);var b=encodeURIComponent('Anrede: '+d.anrede+'\nName: '+d.firstName+' '+d.lastName+'\nUnternehmen: '+d.company+'\nE-Mail: '+d.email+'\nTelefon: '+d.phone+'\nInteresse: '+d.interest+'\n\nNachricht:\n'+d.message);window.location.href='mailto:docule.app@gmail.com?subject='+s+'&body='+b;document.getElementById('contactForm').style.display='none';document.getElementById('formSuccess').style.display='block';}
 </script>
 
 </body>
