@@ -2,299 +2,514 @@
 
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dokule — Ohne KI. Ohne Manipulation.</title>
-  <meta name="description" content="Dokule digitalisiert die Schadensdokumentation. Verifizierte Fotos, Standort, Zeitstempel. Für Versicherungen und Unternehmen.">
-  <meta name="theme-color" content="#2563EB">
-  <link rel="canonical" href="https://dokule.com">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root{--blue:#2563EB;--blue-dark:#1A2744;--blue-deep:#0F172A;--blue-light:#EFF6FF;--blue-mid:#DBEAFE;--white:#FFF;--bg:#FAFBFD;--text:#1A2744;--text2:#475569;--text3:#94A3B8;--border:#E2E8F0;--green:#16A34A;--red:#DC2626;}
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--text);-webkit-font-smoothing:antialiased;}
-    a{text-decoration:none;color:inherit;}
-    :focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px;}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important;}}
-
-```
-nav{position:fixed;top:0;width:100%;z-index:100;padding:0 32px;background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
-.nav-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:68px;}
-.nav-logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:800;color:var(--blue-dark);letter-spacing:0.5px;}
-.nav-logo svg{width:32px;height:32px;}
-.nav-links{display:flex;gap:28px;align-items:center;}
-.nav-links a{font-size:14px;font-weight:500;color:var(--text2);transition:color 0.2s;}
-.nav-links a:hover{color:var(--blue);}
-.nav-cta{background:var(--blue)!important;color:var(--white)!important;padding:10px 24px!important;border-radius:8px;font-weight:600!important;transition:background 0.2s;}
-.nav-cta:hover{background:#1D4ED8!important;}
-
-/* HERO */
-.hero{padding:160px 32px 80px;text-align:center;background:linear-gradient(180deg,var(--blue-light) 0%,var(--white) 100%);}
-.hero-logo{width:80px;height:80px;margin:0 auto 28px;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(37,99,235,0.15);}
-.hero-logo svg{width:80px;height:80px;}
-.hero h1{font-size:clamp(32px,5.5vw,52px);font-weight:900;line-height:1.12;color:var(--blue-dark);max-width:680px;margin:0 auto 20px;}
-.hero h1 em{font-style:normal;color:var(--blue);}
-.hero p{font-size:clamp(15px,2vw,18px);color:var(--text2);max-width:500px;margin:0 auto 40px;line-height:1.7;}
-.hero-cta{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:var(--white);padding:16px 36px;border-radius:12px;font-size:16px;font-weight:600;transition:transform 0.2s,box-shadow 0.2s;}
-.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,0.25);}
-
-/* QUESTION */
-.question{padding:80px 32px;text-align:center;background:var(--blue-dark);color:var(--white);}
-.question h2{font-size:clamp(22px,4vw,36px);font-weight:700;max-width:700px;margin:0 auto;line-height:1.35;}
-.question h2 em{font-style:normal;color:var(--blue-mid);}
-
-/* STORY */
-.story{padding:100px 32px;}
-.story-inner{max-width:1080px;margin:0 auto;}
-.story-tag{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;text-align:center;}
-.story-title{font-size:clamp(26px,4vw,38px);font-weight:800;text-align:center;color:var(--blue-dark);margin-bottom:12px;}
-.story-sub{font-size:16px;color:var(--text2);text-align:center;max-width:500px;margin:0 auto 60px;line-height:1.6;}
-.steps{display:grid;grid-template-columns:1fr;gap:0;max-width:640px;margin:0 auto;position:relative;}
-.steps::before{content:'';position:absolute;left:31px;top:40px;bottom:40px;width:2px;background:var(--border);}
-.step{display:flex;gap:24px;padding:28px 0;position:relative;}
-.step-circle{min-width:64px;height:64px;border-radius:16px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;z-index:1;}
-.step-circle svg{color:var(--blue);}
-.step-content h3{font-size:17px;font-weight:700;color:var(--blue-dark);margin-bottom:4px;}
-.step-content p{font-size:14px;color:var(--text2);line-height:1.6;}
-.step-content .step-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:4px;}
-
-/* FEATURES */
-.features{padding:100px 32px;background:var(--bg);}
-.features-inner{max-width:1080px;margin:0 auto;}
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
-.feat-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;transition:border-color 0.2s;}
-.feat-card:hover{border-color:var(--blue);}
-.feat-icon{width:44px;height:44px;background:var(--blue-light);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--blue);}
-.feat-card h3{font-size:16px;font-weight:700;color:var(--blue-dark);margin-bottom:6px;}
-.feat-card p{font-size:14px;color:var(--text2);line-height:1.6;}
-
-/* STATS */
-.stats-bar{padding:60px 32px;background:var(--blue-dark);}
-.stats-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center;}
-.stat-num{font-size:40px;font-weight:900;color:var(--white);}
-.stat-label{font-size:13px;color:rgba(255,255,255,0.5);margin-top:4px;line-height:1.4;}
-
-/* LANGUAGES */
-.languages{padding:72px 32px;text-align:center;}
-.lang-grid{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px;}
-.lang-item{background:var(--blue-light);padding:10px 20px;border-radius:8px;font-size:14px;font-weight:500;color:var(--blue-dark);}
-
-/* CONTACT */
-.contact{padding:100px 32px;background:var(--bg);}
-.contact-inner{max-width:560px;margin:0 auto;text-align:center;}
-.contact-inner .story-title{margin-bottom:8px;}
-.form-wrap{margin-top:40px;text-align:left;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
-.fg{display:flex;flex-direction:column;gap:4px;}
-.fg.full{grid-column:1/-1;}
-.fg label{font-size:13px;font-weight:500;color:var(--text2);}
-.fg input,.fg select,.fg textarea{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:14px;font-family:'Outfit',sans-serif;color:var(--text);outline:none;transition:border-color 0.2s;}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,0.08);}
-.fg textarea{min-height:90px;resize:vertical;}
-.form-btn{margin-top:16px;background:var(--blue);color:var(--white);border:none;padding:14px;border-radius:10px;font-size:15px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;width:100%;transition:background 0.2s;}
-.form-btn:hover{background:#1D4ED8;}
-.form-ok{display:none;padding:32px;text-align:center;}
-.form-ok h3{font-size:20px;font-weight:700;color:var(--blue-dark);margin-bottom:6px;}
-.form-ok p{color:var(--text2);font-size:15px;}
-
-/* LEGAL */
-.legal{display:none;padding:120px 32px 80px;max-width:680px;margin:0 auto;}
-.legal.active{display:block;}
-.legal h1{font-size:28px;font-weight:800;color:var(--blue-dark);margin-bottom:6px;}
-.legal .ld{font-size:14px;color:var(--text3);margin-bottom:24px;}
-.legal h2{font-size:17px;font-weight:700;color:var(--blue-dark);margin:24px 0 6px;}
-.legal p{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:8px;}
-
-footer{padding:36px 32px;border-top:1px solid var(--border);background:var(--bg);text-align:center;}
-.flinks{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:10px;}
-.flinks a{font-size:13px;color:var(--text2);}
-.flinks a:hover{color:var(--blue);}
-.fcopy{font-size:11px;color:var(--text3);}
-
-@media(max-width:768px){
-  .nav-links a:not(.nav-cta){display:none;}
-  .nav-cta{padding:8px 14px!important;font-size:13px!important;}
-  .hero{padding:120px 20px 60px;}
-  .hero h1{font-size:30px;}
-  .hero-logo{width:60px;height:60px;border-radius:14px;}
-  .hero-logo svg{width:60px;height:60px;}
-  .question h2{font-size:22px;}
-  .stats-inner{grid-template-columns:1fr;gap:20px;}
-  .feat-grid{grid-template-columns:1fr;}
-  .form-row{grid-template-columns:1fr;}
-  .steps::before{left:31px;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dokule — Better docs. Better proof.</title>
+<meta name="description" content="Manipulationssichere Schadensdokumentation für Versicherungen. Verifizierte Fotos, GPS, Zeitstempel. 8 Sprachen.">
+<link rel="icon" href="dokule-logo-app.PNG" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0B1D35;
+  --blue:#2563EB;
+  --blue-light:#3B82F6;
+  --ice:#E8F0FE;
+  --frost:#F0F4FF;
+  --white:#FFFFFF;
+  --gray-50:#F8FAFC;
+  --gray-100:#F1F5F9;
+  --gray-200:#E2E8F0;
+  --gray-400:#94A3B8;
+  --gray-500:#64748B;
+  --gray-600:#475569;
+  --gray-800:#1E293B;
+  --gray-900:#0F172A;
+  --accent:#10B981;
+  --red:#EF4444;
+  --font-display:'DM Serif Display', Georgia, serif;
+  --font-body:'DM Sans', -apple-system, sans-serif;
 }
-```
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);color:var(--gray-900);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-  </style>
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;z-index:100;padding:16px 0;transition:all .4s ease}
+nav.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(–gray-200);padding:12px 0}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(–white);font-weight:700;font-size:18px;letter-spacing:1.5px}
+nav.scrolled .nav-brand{color:var(–navy)}
+.nav-brand img{height:32px;border-radius:6px}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.8);font-size:14px;font-weight:500;transition:color .3s}
+nav.scrolled .nav-links a{color:var(–gray-600)}
+.nav-links a:hover{color:var(–white)}
+nav.scrolled .nav-links a:hover{color:var(–navy)}
+.nav-cta{background:var(–blue);color:var(–white)!important;padding:10px 24px;border-radius:8px;font-weight:600;transition:transform .2s,box-shadow .2s}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,99,235,.4)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:var(–navy);display:flex;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:’’;position:absolute;top:-40%;right:-20%;width:80%;height:120%;background:radial-gradient(ellipse,rgba(37,99,235,.15) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:’’;position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,rgba(11,29,53,.8),transparent);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;padding:140px 32px 100px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+.hero-content{}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(37,99,235,.2);border:1px solid rgba(37,99,235,.3);color:var(–blue-light);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.5px;margin-bottom:28px}
+.hero-badge::before{content:’’;width:6px;height:6px;border-radius:50%;background:var(–accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:var(–font-display);font-size:clamp(38px,5vw,64px);color:var(–white);line-height:1.1;margin-bottom:24px}
+.hero h1 em{font-style:italic;color:var(–blue-light)}
+.hero-sub{font-size:18px;color:var(–gray-400);line-height:1.7;margin-bottom:40px;max-width:480px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(–blue);color:var(–white);padding:16px 32px;border-radius:10px;text-decoration:none;font-weight:600;font-size:16px;transition:all .3s;border:none;cursor:pointer}
+.btn-primary:hover{background:var(–blue-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,99,235,.35)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(–white);padding:16px 32px;border-radius:10px;text-decoration:none;font-weight:600;font-size:16px;border:1px solid rgba(255,255,255,.2);transition:all .3s}
+.btn-secondary:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.05)}
+.hero-visual{display:flex;justify-content:center;align-items:center}
+.hero-logo-wrap{background:var(–white);border-radius:32px;padding:48px;box-shadow:0 40px 100px rgba(0,0,0,.3);position:relative}
+.hero-logo-wrap img{width:240px;height:auto;display:block}
+.hero-logo-wrap::after{content:‘Better docs. Better proof.’;position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);color:var(–gray-400);font-size:14px;letter-spacing:1px;white-space:nowrap;font-weight:500}
+
+/* ── STATS ── */
+.stats{background:var(–white);padding:80px 0;border-bottom:1px solid var(–gray-200)}
+.stats-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.stat{text-align:center}
+.stat-num{font-family:var(–font-display);font-size:clamp(36px,4vw,56px);color:var(–navy);margin-bottom:8px}
+.stat-num span{color:var(–blue)}
+.stat-label{color:var(–gray-500);font-size:15px;line-height:1.5}
+
+/* ── PROBLEM ── */
+.problem{padding:120px 0;background:var(–gray-50)}
+.problem-inner{max-width:900px;margin:0 auto;padding:0 32px;text-align:center}
+.section-overline{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(–blue);margin-bottom:16px}
+.problem h2{font-family:var(–font-display);font-size:clamp(28px,3.5vw,44px);color:var(–navy);line-height:1.25;margin-bottom:24px}
+.problem h2 em{font-style:italic;color:var(–blue)}
+.problem p{font-size:18px;color:var(–gray-600);line-height:1.8;max-width:700px;margin:0 auto}
+
+/* ── STEPS ── */
+.steps{padding:120px 0;background:var(–white)}
+.steps-inner{max-width:1200px;margin:0 auto;padding:0 32px}
+.steps-header{text-align:center;margin-bottom:80px}
+.steps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.step{background:var(–gray-50);border-radius:20px;padding:48px;border:1px solid var(–gray-200);transition:all .4s ease;position:relative;overflow:hidden}
+.step:hover{border-color:var(–blue);transform:translateY(-4px);box-shadow:0 20px 60px rgba(37,99,235,.08)}
+.step-num{font-family:var(–font-display);font-size:64px;color:var(–ice);position:absolute;top:16px;right:24px;line-height:1}
+.step-icon{width:48px;height:48px;border-radius:12px;background:var(–ice);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:22px}
+.step h3{font-size:20px;font-weight:700;color:var(–navy);margin-bottom:12px}
+.step p{color:var(–gray-600);line-height:1.7;font-size:15px}
+
+/* ── FEATURES ── */
+.features{padding:120px 0;background:var(–navy);color:var(–white);position:relative}
+.features::before{content:’’;position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 50%,rgba(37,99,235,.1),transparent 60%);pointer-events:none}
+.features-inner{max-width:1200px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.features-header{text-align:center;margin-bottom:80px}
+.features-header .section-overline{color:var(–blue-light)}
+.features-header h2{color:var(–white)}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feature{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:36px;transition:all .4s}
+.feature:hover{background:rgba(255,255,255,.08);border-color:rgba(37,99,235,.4);transform:translateY(-4px)}
+.feature-icon{width:44px;height:44px;border-radius:10px;background:rgba(37,99,235,.15);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:20px}
+.feature h3{font-size:17px;font-weight:600;margin-bottom:10px;color:var(–white)}
+.feature p{color:var(–gray-400);font-size:14px;line-height:1.7}
+
+/* ── LANGUAGES ── */
+.languages{padding:100px 0;background:var(–white)}
+.languages-inner{max-width:1200px;margin:0 auto;padding:0 32px;text-align:center}
+.lang-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:48px}
+.lang-pill{background:var(–gray-50);border:1px solid var(–gray-200);padding:14px 28px;border-radius:10px;font-size:15px;font-weight:500;color:var(–gray-800);transition:all .3s}
+.lang-pill:hover{border-color:var(–blue);color:var(–blue);transform:translateY(-2px)}
+
+/* ── CONTACT ── */
+.contact{padding:120px 0;background:var(–gray-50)}
+.contact-inner{max-width:640px;margin:0 auto;padding:0 32px}
+.contact-header{text-align:center;margin-bottom:48px}
+.form-group{margin-bottom:20px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-label{display:block;font-size:13px;font-weight:600;color:var(–gray-600);margin-bottom:6px}
+.form-input,.form-select,.form-textarea{width:100%;padding:14px 16px;border:1px solid var(–gray-200);border-radius:10px;font-family:var(–font-body);font-size:15px;color:var(–gray-900);background:var(–white);transition:border-color .3s;outline:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(–blue);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.form-textarea{min-height:120px;resize:vertical}
+.form-submit{width:100%;padding:16px;background:var(–blue);color:var(–white);border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;transition:all .3s;font-family:var(–font-body)}
+.form-submit:hover{background:var(–blue-light);transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,99,235,.3)}
+
+/* ── LEGAL PAGES ── */
+.legal-page{display:none;padding:120px 0 80px;background:var(–white)}
+.legal-page.active{display:block}
+.legal-inner{max-width:700px;margin:0 auto;padding:0 32px}
+.legal-inner h1{font-family:var(–font-display);font-size:32px;color:var(–navy);margin-bottom:8px}
+.legal-inner .legal-date{color:var(–gray-400);font-size:14px;margin-bottom:40px}
+.legal-inner h2{font-size:18px;font-weight:700;color:var(–navy);margin:32px 0 12px}
+.legal-inner p{color:var(–gray-600);line-height:1.8;margin-bottom:16px;font-size:15px}
+
+/* ── FOOTER ── */
+footer{background:var(–navy);padding:60px 0 32px;color:var(–gray-400)}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 32px}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+.footer-brand{display:flex;align-items:center;gap:10px}
+.footer-brand img{height:28px;border-radius:6px}
+.footer-brand span{color:var(–white);font-weight:700;letter-spacing:1px;font-size:16px}
+.footer-links{display:flex;gap:32px}
+.footer-links a{color:var(–gray-400);text-decoration:none;font-size:14px;transition:color .3s}
+.footer-links a:hover{color:var(–white)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:13px}
+.footer-contact a{color:var(–gray-400);text-decoration:none;font-size:13px}
+.footer-contact a:hover{color:var(–white)}
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+.nav-links{display:none}
+.hero-inner{grid-template-columns:1fr;gap:40px;padding:120px 24px 80px;text-align:center}
+.hero-sub{margin:0 auto 32px}
+.hero-actions{justify-content:center}
+.hero-visual{order:-1}
+.hero-logo-wrap{padding:32px}
+.hero-logo-wrap img{width:160px}
+.stats-inner{grid-template-columns:1fr;gap:32px}
+.steps-grid{grid-template-columns:1fr}
+.features-grid{grid-template-columns:1fr}
+.form-row{grid-template-columns:1fr}
+.footer-top{flex-direction:column}
+}
+
+/* ── PAGE VISIBILITY ── */
+#page-home{display:block}
+.page-section{display:block}
+body.legal-open .page-section{display:none}
+body.legal-open .legal-page.active{display:block}
+body.legal-open footer{display:block}
+body.legal-open nav{display:block}
+</style>
+
 </head>
 <body>
 
-<nav role="navigation" aria-label="Hauptnavigation">
-  <div class="nav-inner">
-   <a href="#" class="nav-logo" onclick="showPage('home')" aria-label="Dokule Startseite">
-  <img  alt="Dokule" style="height:36px;border-radius:8px;"> DOKULE
-</a>
+<!-- NAV -->
 
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand" onclick="showHome()">
+      <img src="dokule-logo-app.PNG" alt="Dokule"> DOKULE
+    </a>
     <div class="nav-links">
-      <a href="#story" onclick="showPage('home')">So funktioniert's</a>
-      <a href="#features" onclick="showPage('home')">Vorteile</a>
-      <a href="#contact" class="nav-cta" onclick="showPage('home')">Kontakt aufnehmen</a>
+      <a href="#story" onclick="showHome()">So funktioniert's</a>
+      <a href="#features" onclick="showHome()">Vorteile</a>
+      <a href="#languages" onclick="showHome()">Sprachen</a>
+      <a href="#contact" class="nav-cta" onclick="showHome()">Kontakt</a>
     </div>
   </div>
 </nav>
 
+<!-- ════════ HOME ════════ -->
+
 <div id="page-home">
 
-  <section class="hero" role="banner">
-    <div class="hero-logo" aria-hidden="true">
-      <svg viewBox="0 0 80 80" fill="none"><rect width="80" height="80" rx="20" fill="#2563EB"/><circle cx="40" cy="40" r="28" fill="#1A2744"/><g fill="#2A3F5F"><polygon points="40,14 42,18 38,18"/><polygon points="40,66 42,62 38,62"/><polygon points="14,40 18,42 18,38"/><polygon points="66,40 62,42 62,38"/><polygon points="21,21 24,23 22,25"/><polygon points="59,21 56,23 58,25"/><polygon points="21,59 24,57 22,55"/><polygon points="59,59 56,57 58,55"/><polygon points="28,16 30,20 26,19"/><polygon points="52,16 50,20 54,19"/><polygon points="28,64 30,60 26,61"/><polygon points="52,64 50,60 54,61"/></g><text x="40" y="45" text-anchor="middle" fill="white" font-family="Outfit,sans-serif" font-size="16" font-weight="800">dokule</text></svg>
-    </div>
-    <h1>Schadensdokumentation, der man <em>vertrauen</em> kann.</h1>
-    <p>Ohne KI. Ohne Manipulation. Dokule macht Schadensmeldungen überprüfbar mit verifizierten Fotos, Standort und Zeitstempeln.</p>
-    <a href="#contact" class="hero-cta" role="button">Kontakt aufnehmen →</a>
-  </section>
+<!-- HERO -->
 
-  <section class="question" role="region" aria-label="Leitfrage">
-    <h2>Was würden Sie davon halten, wenn Ihre Kunden <em>keine Möglichkeit</em> mehr hätten, eine Schadensdokumentation zu manipulieren?</h2>
-  </section>
-
-  <section class="story" id="story" role="region" aria-label="So funktioniert es">
-    <div class="story-inner">
-      <div class="story-tag">So funktioniert's</div>
-      <h2 class="story-title">Eine Alltagssituation. Eine Lösung.</h2>
-      <p class="story-sub">Ihr Kunde hat einen Unfall. Was passiert als nächstes?</p>
-
-```
-  <div class="steps">
-    <div class="step">
-      <div class="step-circle">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-      </div>
-      <div class="step-content">
-        <div class="step-label">Schritt 1</div>
-        <h3>Der Unfall passiert</h3>
-        <p>Ihr Kunde ist in einen Vorfall verwickelt. Statt Panik öffnet er Dokule und startet die Dokumentation in seiner Sprache.</p>
+<section class="hero page-section">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Jetzt verfügbar im App Store</div>
+      <h1>Schadens&shy;dokumentation, der man <em>vertrauen</em> kann.</h1>
+      <p class="hero-sub">Verifizierte Fotos, GPS-Standort und Zeitstempel. Jede Änderung wird protokolliert. Ohne KI. Ohne Manipulation.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Kontakt aufnehmen →</a>
+        <a href="#story" class="btn-secondary">So funktioniert's</a>
       </div>
     </div>
-    <div class="step">
-      <div class="step-circle">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-      </div>
-      <div class="step-content">
-        <div class="step-label">Schritt 2</div>
-        <h3>Fotos werden vor Ort aufgenommen</h3>
-        <p>Jedes Foto wird automatisch mit GPS-Standort und Zeitstempel versiegelt. Nachträgliche Änderungen sind für Sie sichtbar.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-circle">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><rect x="14" y="14" width="8" height="8" rx="1"/></svg>
-      </div>
-      <div class="step-content">
-        <div class="step-label">Schritt 3</div>
-        <h3>Datenaustausch per QR-Code</h3>
-        <p>Durch den persönlichen QR-Code tauschen die Beteiligten DSGVO-konform Versicherungsdaten aus. Keine persönlichen Adressen werden preisgegeben.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-circle">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      </div>
-      <div class="step-content">
-        <div class="step-label">Schritt 4</div>
-        <h3>Sie erhalten alles. Versiegelt.</h3>
-        <p>Die komplette Dokumentation ist für Sie jederzeit abrufbar. Fotos, Standort, Zeitangaben, Beteiligte. Jede Bearbeitung wird mit Zeitstempel protokolliert.</p>
+    <div class="hero-visual">
+      <div class="hero-logo-wrap">
+        <img src="dokule-logo.PNG" alt="Dokule Logo">
       </div>
     </div>
   </div>
-</div>
-```
+</section>
 
-  </section>
+<!-- STATS -->
 
-  <section class="stats-bar" role="region" aria-label="Zahlen">
-    <div class="stats-inner">
-      <div><div class="stat-num">6 Mrd. €</div><div class="stat-label">Schaden durch Versicherungsbetrug pro Jahr</div></div>
-      <div><div class="stat-num">10%</div><div class="stat-label">aller Schadensmeldungen sind verdächtig</div></div>
-      <div><div class="stat-num">2,5 Mio.</div><div class="stat-label">Unfälle pro Jahr in Deutschland</div></div>
+<section class="stats page-section">
+  <div class="stats-inner">
+    <div class="stat reveal">
+      <div class="stat-num"><span>6</span> Mrd. €</div>
+      <div class="stat-label">Versicherungsbetrug pro Jahr in Deutschland</div>
     </div>
-  </section>
+    <div class="stat reveal">
+      <div class="stat-num"><span>10</span>%</div>
+      <div class="stat-label">aller Schadensmeldungen sind verdächtig</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num"><span>2,5</span> Mio.</div>
+      <div class="stat-label">Unfälle pro Jahr auf deutschen Straßen</div>
+    </div>
+  </div>
+</section>
 
-  <section class="features" id="features" role="region" aria-label="Vorteile">
-    <div class="features-inner">
-      <div class="story-tag" style="text-align:center;">Ihre Vorteile</div>
-      <h2 class="story-title">Weniger Schreibkram. Mehr Sicherheit.</h2>
-      <p class="story-sub">Stellen Sie sich vor, jede Dokumentation die Sie erhalten ist zu 100% real.</p>
-      <div class="feat-grid">
-        <div class="feat-card">
-          <div class="feat-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <h3>Versiegelte Dokumentation</h3><p>Alle Daten werden in Echtzeit gespeichert und sind für Sie jederzeit abrufbar. Ohne Verzögerung.</p>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
-          <h3>Jede Änderung sichtbar</h3><p>Wenn Ihr Kunde nachträglich etwas bearbeitet, sehen Sie genau wann und was geändert wurde.</p>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <h3>Beteiligte einfach hinzufügen</h3><p>Per QR-Code oder manuell. Versicherungsdaten werden DSGVO-konform ausgetauscht.</p>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-          <h3>8 Sprachen</h3><p>Ihre Kunden dokumentieren in ihrer Muttersprache. Keine Missverständnisse, keine fehlenden Angaben.</p>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-          <h3>Ohne KI</h3><p>Keine generierten Texte. Alles wird vom Menschen erfasst. Was Sie sehen, ist was Ihr Kunde dokumentiert hat.</p>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <h3>Strukturierte Berichte</h3><p>Einheitliche, vollständige Schadensberichte. Kein Rätselraten, keine fehlenden Felder.</p>
-        </div>
+<!-- PROBLEM -->
+
+<section class="problem page-section" id="problem">
+  <div class="problem-inner reveal">
+    <div class="section-overline">Das Problem</div>
+    <h2>Was wäre, wenn Ihre Kunden <em>keine Möglichkeit</em> mehr hätten, eine Schadensdokumentation zu manipulieren?</h2>
+    <p>Heute kommen Schadensmeldungen als Fotos ohne Kontext, als lückenhafte Beschreibungen, als nachträgliche E-Mails. Dokule macht Schluss damit.</p>
+  </div>
+</section>
+
+<!-- STEPS -->
+
+<section class="steps page-section" id="story">
+  <div class="steps-inner">
+    <div class="steps-header reveal">
+      <div class="section-overline">So funktioniert's</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(28px,3.5vw,44px);color:var(--navy)">Vom Unfall zum versiegelten Bericht</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-icon">📱</div>
+        <h3>Dokumentation starten</h3>
+        <p>Ihr Kunde öffnet Dokule und wählt die Schadensart. Die App führt ihn durch den gesamten Prozess — in seiner Sprache.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <div class="step-icon">📸</div>
+        <h3>Fotos versiegeln</h3>
+        <p>Jedes Foto wird automatisch mit GPS-Standort und Zeitstempel versiegelt. Ein eindeutiger Hash macht nachträgliche Manipulationen sichtbar.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <div class="step-icon">🔄</div>
+        <h3>Daten austauschen</h3>
+        <p>Per QR-Code tauschen Beteiligte Versicherungsdaten DSGVO-konform aus. Nur relevante Daten — keine privaten Adressen.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <div class="step-icon">✅</div>
+        <h3>Bericht erhalten</h3>
+        <p>Sie erhalten eine vollständige, versiegelte Dokumentation. Fotos, Standort, Zeitangaben, Beteiligte. Jede Bearbeitung mit Zeitstempel.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="languages" role="region" aria-label="Sprachen">
-    <div class="story-tag">Mehrsprachig</div>
-    <h2 class="story-title">Verfügbar in 8 Sprachen</h2>
-    <p style="color:var(--text2);margin-bottom:0;font-size:15px;">Damit Dokumentation nicht an der Sprache scheitert.</p>
+<!-- FEATURES -->
+
+<section class="features page-section" id="features">
+  <div class="features-inner">
+    <div class="features-header reveal">
+      <div class="section-overline">Ihre Vorteile</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(28px,3.5vw,44px)">Weniger Betrug. Mehr Klarheit.</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature reveal">
+        <div class="feature-icon">🔒</div>
+        <h3>Versiegelte Dokumentation</h3>
+        <p>Jede Aktion wird gehasht und protokolliert. Fotos, Beschreibungen, Änderungen — alles nachvollziehbar.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">⚠️</div>
+        <h3>Änderungen sofort sichtbar</h3>
+        <p>Nachträgliche Bearbeitungen werden automatisch mit Zeitstempel markiert. Sie sehen genau was wann geändert wurde.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">📎</div>
+        <h3>QR-Code Datenaustausch</h3>
+        <p>Beteiligte tauschen Versicherungsdaten per QR-Code aus. DSGVO-konform, ohne sensible Daten preiszugeben.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">🌍</div>
+        <h3>8 Sprachen</h3>
+        <p>Deutsch, Englisch, Türkisch, Arabisch, Französisch, Polnisch, Rumänisch, Russisch. Keine Sprachbarrieren.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">🚫</div>
+        <h3>Ohne KI</h3>
+        <p>Keine generierten Texte. Alles wird vom Menschen erfasst. Was Sie sehen, ist was Ihr Kunde dokumentiert hat.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">📋</div>
+        <h3>Strukturierte Berichte</h3>
+        <p>Einheitliche, vollständige Schadensberichte. Kein Rätselraten, keine fehlenden Felder, kein Nachhaken.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+
+<section class="languages page-section" id="languages">
+  <div class="languages-inner reveal">
+    <div class="section-overline">Mehrsprachig</div>
+    <h2 style="font-family:var(--font-display);font-size:clamp(28px,3.5vw,44px);color:var(--navy)">8 Sprachen. Null Missverständnisse.</h2>
     <div class="lang-grid">
-      <div class="lang-item">Deutsch</div><div class="lang-item">English</div><div class="lang-item">Türkçe</div><div class="lang-item">العربية</div>
-      <div class="lang-item">Français</div><div class="lang-item">Polski</div><div class="lang-item">Română</div><div class="lang-item">Русский</div>
+      <div class="lang-pill">🇩🇪 Deutsch</div>
+      <div class="lang-pill">🇬🇧 English</div>
+      <div class="lang-pill">🇹🇷 Türkçe</div>
+      <div class="lang-pill">🇸🇦 العربية</div>
+      <div class="lang-pill">🇫🇷 Français</div>
+      <div class="lang-pill">🇵🇱 Polski</div>
+      <div class="lang-pill">🇷🇴 Română</div>
+      <div class="lang-pill">🇷🇺 Русский</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="contact" id="contact" role="region" aria-label="Kontakt">
-    <div class="contact-inner">
-      <div class="story-tag">Kontakt</div>
-      <h2 class="story-title">Sprechen Sie mit uns.</h2>
-      <p style="color:var(--text2);font-size:15px;margin-bottom:0;">Erfahren Sie, wie Dokule Ihre Schadensbearbeitung verändern kann.</p>
-      <div class="form-wrap" id="contactForm">
-        <div class="form-row"><div class="fg"><label for="f-a">Anrede</label><select id="f-a"><option value="">Bitte wählen</option><option>Herr</option><option>Frau</option><option>Divers</option></select></div><div class="fg"><label for="f-c">Unternehmen</label><input id="f-c" placeholder="z.B. Allianz Versicherungs-AG"></div></div>
-        <div class="form-row"><div class="fg"><label for="f-fn">Vorname *</label><input id="f-fn" required></div><div class="fg"><label for="f-ln">Nachname *</label><input id="f-ln" required></div></div>
-        <div class="form-row"><div class="fg"><label for="f-em">E-Mail *</label><input id="f-em" type="email" required></div><div class="fg"><label for="f-ph">Telefon</label><input id="f-ph" type="tel"></div></div>
-        <div class="form-row"><div class="fg full"><label for="f-in">Wie können wir Ihnen helfen?</label><select id="f-in"><option value="">Bitte wählen</option><option>Integration in bestehende Systeme</option><option>Pilotprojekt starten</option><option>API-Zugang</option><option>Flottenmanagement</option><option>Allgemeine Anfrage</option></select></div></div>
-        <div class="form-row"><div class="fg full"><label for="f-msg">Nachricht</label><textarea id="f-msg" placeholder="Beschreiben Sie Ihren Anwendungsfall..."></textarea></div></div>
-        <button class="form-btn" onclick="sf()">Anfrage senden</button>
+<!-- CONTACT -->
+
+<section class="contact page-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-header reveal">
+      <div class="section-overline">Kontakt</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(28px,3.5vw,40px);color:var(--navy)">Sprechen Sie mit uns.</h2>
+      <p style="color:var(--gray-500);margin-top:12px">Erfahren Sie, wie Dokule Ihre Schadensbearbeitung verändern kann.</p>
+    </div>
+    <div id="contact-form" class="reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Vorname *</label>
+          <input type="text" class="form-input" id="cf-first" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nachname *</label>
+          <input type="text" class="form-input" id="cf-last" required>
+        </div>
       </div>
-      <div class="form-ok" id="fOk"><h3>Anfrage gesendet.</h3><p>Wir melden uns innerhalb von 24 Stunden.</p></div>
+      <div class="form-group">
+        <label class="form-label">Unternehmen</label>
+        <input type="text" class="form-input" id="cf-company">
+      </div>
+      <div class="form-group">
+        <label class="form-label">E-Mail *</label>
+        <input type="email" class="form-input" id="cf-email" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Wie können wir helfen?</label>
+        <select class="form-select" id="cf-topic">
+          <option value="">Bitte wählen</option>
+          <option>Integration in bestehende Systeme</option>
+          <option>Pilotprojekt starten</option>
+          <option>API-Zugang</option>
+          <option>Flottenmanagement</option>
+          <option>Allgemeine Anfrage</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nachricht</label>
+        <textarea class="form-textarea" id="cf-msg"></textarea>
+      </div>
+      <button class="form-submit" onclick="sendForm()">Anfrage senden</button>
+      <div id="form-success" style="display:none;text-align:center;padding:32px;color:var(--accent);font-weight:600;font-size:18px">✓ Anfrage gesendet. Wir melden uns innerhalb von 24 Stunden.</div>
     </div>
-  </section>
+  </div>
+</section>
 
+</div><!-- /page-home -->
+
+<!-- ════════ LEGAL PAGES ════════ -->
+
+<div id="page-privacy" class="legal-page">
+  <div class="legal-inner">
+    <h1>Datenschutzerklärung</h1>
+    <p class="legal-date">Stand: April 2026</p>
+    <h2>1. Verantwortlicher</h2><p>Betreiber der App Dokule. Kontakt: datenschutz@dokule.com</p>
+    <h2>2. Erhobene Daten</h2><p>Registrierung: E-Mail, Name, Adresse, Telefon. Nutzung: Fotos, GPS, Zeitstempel, Fahrzeug- und Versicherungsdaten.</p>
+    <h2>3. Zweck</h2><p>Ausschließlich Schadensdokumentation und Beweissicherung.</p>
+    <h2>4. Speicherung</h2><p>EU-Server (AWS Frankfurt), verschlüsselte Übertragung.</p>
+    <h2>5. Weitergabe</h2><p>Nur wenn aktiv veranlasst. Keine Werbung.</p>
+    <h2>6. QR-Code</h2><p>Nur Name, Versicherung und Kennzeichen werden geteilt.</p>
+    <h2>7. Account-Löschung</h2><p>Bei Löschung deines Accounts werden alle persönlichen Daten unwiderruflich entfernt. Die dokumentierten Schadenfälle bleiben anonymisiert erhalten, da sie als manipulationssichere Beweise bereits an Versicherungen übermittelt worden sein können (DSGVO Art. 17 Abs. 3 lit. e).</p>
+    <h2>8. Rechte</h2><p>Auskunft, Berichtigung, Löschung gemäß DSGVO. datenschutz@dokule.com</p>
+    <h2>9. Cookies</h2><p>Keine Tracking-Cookies.</p>
+  </div>
 </div>
 
-<div id="page-privacy" class="legal"><h1>Datenschutzerklärung</h1><p class="ld">Stand: April 2026</p><h2>1. Verantwortlicher</h2><p>Betreiber der App Dokule. Kontakt: datenschutz@dokule.com</p><h2>2. Erhobene Daten</h2><p>Registrierung: E-Mail, Name, Adresse, Telefon. Nutzung: Fotos, GPS, Zeitstempel, Fahrzeug- und Versicherungsdaten.</p><h2>3. Zweck</h2><p>Ausschließlich Schadensdokumentation und Beweissicherung.</p><h2>4. Speicherung</h2><p>EU-Server (AWS Frankfurt), verschlüsselte Übertragung.</p><h2>5. Weitergabe</h2><p>Nur wenn aktiv veranlasst. Keine Werbung.</p><h2>6. QR-Code</h2><p>Nur Name, Versicherung und Kennzeichen werden geteilt.</p><h2>7. Rechte</h2><p>Auskunft, Berichtigung, Löschung gemäß DSGVO. datenschutz@dokule.com</p><h2>8. Cookies</h2><p>Keine Tracking-Cookies.</p></div>
-<div id="page-terms" class="legal"><h1>Nutzungsbedingungen</h1><p class="ld">Stand: April 2026</p><h2>1. Geltungsbereich</h2><p>Für Dokule App und dokule.com.</p><h2>2. Leistung</h2><p>Schadensdokumentation mit Fotos, GPS, Datenaustausch.</p><h2>3. Keine Rechtsberatung</h2><p>Ersetzt keine anwaltliche Beratung.</p><h2>4. Kosten</h2><p>Grundfunktionen kostenlos.</p><h2>5. Haftung</h2><p>Keine Gewähr für rechtliche Verwertbarkeit.</p><h2>6. Recht</h2><p>Deutsches Recht.</p></div>
-<div id="page-imprint" class="legal"><h1>Impressum</h1><p class="ld">§ 5 TMG</p><h2>Betreiber</h2><p>Dokule · Azra Arikan · Berlin · Deutschland</p><h2>Kontakt</h2><p>kontakt@dokule.com</p><h2>Inhaltlich verantwortlich</h2><p>Azra Arikan</p></div>
+<div id="page-terms" class="legal-page">
+  <div class="legal-inner">
+    <h1>Nutzungsbedingungen</h1>
+    <p class="legal-date">Stand: April 2026</p>
+    <h2>1. Geltungsbereich</h2><p>Für Dokule App und dokule.com.</p>
+    <h2>2. Leistung</h2><p>Schadensdokumentation mit Fotos, GPS, Datenaustausch.</p>
+    <h2>3. Keine Rechtsberatung</h2><p>Ersetzt keine anwaltliche Beratung.</p>
+    <h2>4. Kosten</h2><p>Grundfunktionen kostenlos.</p>
+    <h2>5. Haftung</h2><p>Keine Gewähr für rechtliche Verwertbarkeit.</p>
+    <h2>6. Recht</h2><p>Deutsches Recht.</p>
+  </div>
+</div>
 
-<footer role="contentinfo"><div class="flinks"><a href="#" onclick="showPage('home')">Home</a><a href="#" onclick="showPage('privacy')">Datenschutz</a><a href="#" onclick="showPage('terms')">Nutzungsbedingungen</a><a href="#" onclick="showPage('imprint')">Impressum</a></div><p class="fcopy">© 2026 Dokule. Alle Rechte vorbehalten.</p></footer>
+<div id="page-imprint" class="legal-page">
+  <div class="legal-inner">
+    <h1>Impressum</h1>
+    <p class="legal-date">§ 5 TMG</p>
+    <h2>Betreiber</h2><p>Dokule · Azra Arikan · Berlin · Deutschland</p>
+    <h2>Kontakt</h2><p>kontakt@dokule.com</p>
+    <h2>Inhaltlich verantwortlich</h2><p>Azra Arikan</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="dokule-logo-app.PNG" alt="Dokule">
+        <span>DOKULE</span>
+      </div>
+      <div class="footer-links">
+        <a href="#" onclick="showHome()">Startseite</a>
+        <a href="#" onclick="showLegal('privacy')">Datenschutz</a>
+        <a href="#" onclick="showLegal('terms')">Nutzungsbedingungen</a>
+        <a href="#" onclick="showLegal('imprint')">Impressum</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Dokule. Alle Rechte vorbehalten.</div>
+      <div class="footer-contact"><a href="mailto:kontakt@dokule.com">kontakt@dokule.com</a></div>
+    </div>
+  </div>
+</footer>
 
 <script>
-function showPage(p){document.getElementById('page-home').style.display=p==='home'?'block':'none';document.querySelectorAll('.legal').forEach(e=>e.classList.remove('active'));if(p!=='home')document.getElementById('page-'+p).classList.add('active');window.scrollTo(0,0);history.pushState({},'',p==='home'?'/':'/'+p);}
-function handleRoute(){var p=location.pathname;if(p.includes('privacy'))showPage('privacy');else if(p.includes('terms'))showPage('terms');else if(p.includes('imprint'))showPage('imprint');else showPage('home');}
-window.addEventListener('popstate',handleRoute);handleRoute();
-function sf(){var fn=document.getElementById('f-fn').value,ln=document.getElementById('f-ln').value,em=document.getElementById('f-em').value;if(!fn||!ln||!em){alert('Bitte Pflichtfelder ausfüllen.');return;}var s=encodeURIComponent('Dokule Anfrage von '+fn+' '+ln),b=encodeURIComponent('Anrede: '+document.getElementById('f-a').value+'\nName: '+fn+' '+ln+'\nUnternehmen: '+document.getElementById('f-c').value+'\nE-Mail: '+em+'\nTelefon: '+document.getElementById('f-ph').value+'\nInteresse: '+document.getElementById('f-in').value+'\n\nNachricht:\n'+document.getElementById('f-msg').value);window.location.href='mailto:docule.app@gmail.com?subject='+s+'&body='+b;document.getElementById('contactForm').style.display='none';document.getElementById('fOk').style.display='block';}
+// ── NAV SCROLL ──
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)
+})
+
+// ── REVEAL ON SCROLL ──
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:.15})
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
+
+// ── LEGAL PAGES ──
+function showLegal(page){
+  document.body.classList.add('legal-open')
+  document.querySelectorAll('.legal-page').forEach(p=>p.classList.remove('active'))
+  document.getElementById('page-'+page).classList.add('active')
+  window.scrollTo(0,0)
+}
+function showHome(){
+  document.body.classList.remove('legal-open')
+  document.querySelectorAll('.legal-page').forEach(p=>p.classList.remove('active'))
+}
+
+// ── CONTACT FORM ──
+function sendForm(){
+  const f=document.getElementById('cf-first').value
+  const l=document.getElementById('cf-last').value
+  const e=document.getElementById('cf-email').value
+  if(!f||!l||!e){alert('Bitte fülle alle Pflichtfelder aus.');return}
+  const c=document.getElementById('cf-company').value
+  const t=document.getElementById('cf-topic').value
+  const m=document.getElementById('cf-msg').value
+  const subject=encodeURIComponent('Dokule Anfrage von '+f+' '+l)
+  const body=encodeURIComponent('Vorname: '+f+'\nNachname: '+l+'\nUnternehmen: '+c+'\nE-Mail: '+e+'\nThema: '+t+'\n\nNachricht:\n'+m)
+  window.open('mailto:kontakt@dokule.com?subject='+subject+'&body='+body)
+  document.getElementById('form-success').style.display='block'
+}
 </script>
 
 </body>
